@@ -25,6 +25,8 @@ public interface AdminDao {
 
 	public void deleteConsumerDataById(String consId)throws SomethingWentWrongException,RecordNotFoundException;
 	
+	public int getLastBillId() throws SomethingWentWrongException, RecordNotFoundException;
 	
+	public void generateBillData(BillDto bill) throws SomethingWentWrongException;
 	
 }

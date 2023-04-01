@@ -1,6 +1,7 @@
 package com.paytric.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,20 +37,20 @@ public class AdminDaoImpl implements AdminDao{
 			ps.setString(2, password);
 			ResultSet rs=ps.executeQuery();
 			if(DbUtils.isResultSetEmpty(rs)) {
-				throw new InvalidUsernameOrPasswordException("  Invalid Username or Password! ");
+				throw new InvalidUsernameOrPasswordException("Invalid Username or Password!");
 			}
 			else {
 				rs.next();
 				return new AdminDtoImpl(rs.getString(1), rs.getString(2), rs.getString(1));
 			}
 		} catch (SQLException | ClassNotFoundException e) {
-			throw new SomethingWentWrongException("  Unable to Login, something went wrong.");
+			throw new SomethingWentWrongException("Unable to Login, something went wrong.");
 		}
 		finally {
 			try {
 				DbUtils.closeConnection(con);
 			} catch (SQLException e) {
-				throw new SomethingWentWrongException("  Unable to Login, something went wrong.");
+				throw new SomethingWentWrongException("Unable to Login, something went wrong.");
 			}
 		}
 	}
@@ -69,7 +70,7 @@ public class AdminDaoImpl implements AdminDao{
 			ps.setInt(1, 1);
 			ResultSet rs=ps.executeQuery();
 			if(DbUtils.isResultSetEmpty(rs)) {
-				throw new RecordNotFoundException("  Record not found in database.");
+				throw new RecordNotFoundException("Record not found in database.");
 			}
 			else {
 				while(rs.next()) {
@@ -77,13 +78,13 @@ public class AdminDaoImpl implements AdminDao{
 				}
 			}
 		} catch (SQLException | ClassNotFoundException e) {
-			throw new SomethingWentWrongException("  Unable to fetch data, please try again later");
+			throw new SomethingWentWrongException("Unable to fetch data, please try again later");
 		}
 		finally {
 			try {
 				DbUtils.closeConnection(con);
 			} catch (SQLException e) {
-				throw new SomethingWentWrongException("  Unable to fetch data, please try again later");
+				throw new SomethingWentWrongException("Unable to fetch data, please try again later");
 			}
 		}
 		return list;
@@ -104,7 +105,7 @@ public class AdminDaoImpl implements AdminDao{
 			ps.setString(1, conId);
 			ResultSet rs=ps.executeQuery();
 			if(DbUtils.isResultSetEmpty(rs)) {
-				throw new RecordNotFoundException("  Record not found in database.");
+				throw new RecordNotFoundException("Record not found in database.");
 			}
 			else {
 				while(rs.next()) {
@@ -112,13 +113,13 @@ public class AdminDaoImpl implements AdminDao{
 				}
 			}
 		} catch (SQLException | ClassNotFoundException e) {
-			throw new SomethingWentWrongException("  Unable to fetch data, please try again later");
+			throw new SomethingWentWrongException("Unable to fetch data, please try again later");
 		}
 		finally {
 			try {
 				DbUtils.closeConnection(con);
 			} catch (SQLException e) {
-				throw new SomethingWentWrongException("  Unable to fetch data, please try again later");
+				throw new SomethingWentWrongException("Unable to fetch data, please try again later");
 			}
 		}
 		return list;
@@ -135,7 +136,7 @@ public class AdminDaoImpl implements AdminDao{
 			PreparedStatement ps=con.prepareStatement(query);
 			ResultSet rs=ps.executeQuery();
 			if(DbUtils.isResultSetEmpty(rs)) {
-				throw new RecordNotFoundException("  Record not found in database.");
+				throw new RecordNotFoundException("Record not found in database.");
 			}
 			else {
 				while(rs.next()) {
@@ -143,13 +144,13 @@ public class AdminDaoImpl implements AdminDao{
 				}
 			}
 		} catch (SQLException | ClassNotFoundException e) {
-			throw new SomethingWentWrongException("  Unable to fetch data, please try again later");
+			throw new SomethingWentWrongException("Unable to fetch data, please try again later");
 		}
 		finally {
 			try {
 				DbUtils.closeConnection(con);
 			} catch (SQLException e) {
-				throw new SomethingWentWrongException("  Unable to fetch data, please try again later");
+				throw new SomethingWentWrongException("Unable to fetch data, please try again later");
 			}
 		}
 		return list;
@@ -169,20 +170,20 @@ public class AdminDaoImpl implements AdminDao{
 			ps.setString(1, ConsumerId);
 			ResultSet rs=ps.executeQuery();
 			if(DbUtils.isResultSetEmpty(rs)) {
-				throw new RecordNotFoundException("  Record not found in database.");
+				throw new RecordNotFoundException("Record not found in database.");
 			}
 			else {
 				rs.next();
 				result=rs.getString(1)+" "+rs.getString(2);
 			}
 		} catch (SQLException | ClassNotFoundException e) {
-			throw new SomethingWentWrongException("  Unable to fetch data, please try again later");
+			throw new SomethingWentWrongException("Unable to fetch data, please try again later");
 		}
 		finally {
 			try {
 				DbUtils.closeConnection(con);
 			} catch (SQLException e) {
-				throw new SomethingWentWrongException("  Unable to fetch data, please try again later");
+				throw new SomethingWentWrongException("Unable to fetch data, please try again later");
 			}
 		}
 		return result;
@@ -201,7 +202,7 @@ public class AdminDaoImpl implements AdminDao{
 			ps.setInt(1, 1);
 			ResultSet rs=ps.executeQuery();
 			if(DbUtils.isResultSetEmpty(rs)) {
-				throw new RecordNotFoundException("  Record not found in database.");
+				throw new RecordNotFoundException("Record not found in database.");
 			}
 			else {
 				while(rs.next()) {
@@ -209,18 +210,19 @@ public class AdminDaoImpl implements AdminDao{
 				}
 			}
 		} catch (SQLException | ClassNotFoundException e) {
-			throw new SomethingWentWrongException("  Unable to fetch data, please try again later");
+			throw new SomethingWentWrongException("Unable to fetch data, please try again later");
 		}
 		finally {
 			try {
 				DbUtils.closeConnection(con);
 			} catch (SQLException e) {
-				throw new SomethingWentWrongException("  Unable to fetch data, please try again later");
+				throw new SomethingWentWrongException("Unable to fetch data, please try again later");
 			}
 		}
 		return list;
 	}
 
+	
 	
 	@Override
 	public List<BillDto> viewAllPendingBillsData() throws SomethingWentWrongException, RecordNotFoundException {
@@ -233,7 +235,7 @@ public class AdminDaoImpl implements AdminDao{
 			ps.setInt(1, 0);
 			ResultSet rs=ps.executeQuery();
 			if(DbUtils.isResultSetEmpty(rs)) {
-				throw new RecordNotFoundException("  Record not found in database.");
+				throw new RecordNotFoundException("Record not found in database.");
 			}
 			else {
 				while(rs.next()) {
@@ -241,13 +243,13 @@ public class AdminDaoImpl implements AdminDao{
 				}
 			}
 		} catch (SQLException | ClassNotFoundException e) {
-			throw new SomethingWentWrongException("  Unable to fetch data, please try again later");
+			throw new SomethingWentWrongException("Unable to fetch data, please try again later");
 		}
 		finally {
 			try {
 				DbUtils.closeConnection(con);
 			} catch (SQLException e) {
-				throw new SomethingWentWrongException("  Unable to fetch data, please try again later");
+				throw new SomethingWentWrongException("Unable to fetch data, please try again later");
 			}
 		}
 		return list;
@@ -266,22 +268,87 @@ public class AdminDaoImpl implements AdminDao{
 			ps.setString(2, consId);
             int rowAffected=ps.executeUpdate();
             if(rowAffected < 1) {
-            	throw new RecordNotFoundException("  User with consumerId '"+consId+"' is not available in database.");
+            	throw new RecordNotFoundException("User with consumerId '"+consId+"' is not available in database.");
             }
             
 		} catch (SQLException | ClassNotFoundException e) {
-			throw new SomethingWentWrongException("  Unable to delete data please try again later.");
+			throw new SomethingWentWrongException("Unable to delete data please try again later.");
 		}
 		finally {
 			try {
 				DbUtils.closeConnection(con);
 			} catch (SQLException e) {
-				throw new SomethingWentWrongException("  Unable to delete data please try again later.");
+				throw new SomethingWentWrongException("Unable to delete data please try again later.");
 			}
 		}
 		
 	}
 	
+	
+	
+	@Override
+	public int getLastBillId() throws SomethingWentWrongException, RecordNotFoundException {
+		Connection con=null;
+		int res=0;
+		try {
+			con=DbUtils.startConnection();
+			String query="SELECT Id from bill order by Id desc limit 1";
+			PreparedStatement ps=con.prepareStatement(query);
+			ResultSet rs=ps.executeQuery();
+			if(DbUtils.isResultSetEmpty(rs)) {
+				throw new RecordNotFoundException("Record not found in database");
+			}
+			rs.next();
+			res=rs.getInt(1);
+		} catch (SQLException | ClassNotFoundException e) {
+			throw new SomethingWentWrongException("Unable to fetch data please try again later");
+		}
+		finally {
+			try {
+				DbUtils.closeConnection(con);
+			} catch (SQLException e) {
+				throw new SomethingWentWrongException("Unable to fetch data please try again later");
+			}
+		}
+		
+		return res;
+	}
+
+	
+	
+	
+	@Override
+	public void generateBillData(BillDto bill) throws SomethingWentWrongException {
+		Connection con=null;
+		try {
+			con=DbUtils.startConnection();
+			String query="insert into bill(consumerId, billId, previous_reading, current_reading, units_consumed, total_amount, startDate, endDate, billing_date, due_date) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement ps=con.prepareStatement(query);
+			ps.setString(1, bill.getConsumerId());
+			ps.setString(2, bill.getBillId());
+			ps.setDouble(3, bill.getPrevReading());
+			ps.setDouble(4, bill.getCurrReading());
+			ps.setDouble(5, bill.getUnitConsumed());
+			ps.setDouble(6, bill.getTotalAmount());
+			ps.setDate(7, Date.valueOf(bill.getStartDate()));
+			ps.setDate(8, Date.valueOf(bill.getEndDate()));
+			ps.setDate(9, Date.valueOf(bill.getBilling_date()));
+			ps.setDate(10, Date.valueOf(bill.getDueDate()));
+            int rowAffected=ps.executeUpdate();
+            
+		} catch (SQLException | ClassNotFoundException e) {
+			throw new SomethingWentWrongException("Unable to delete data please try again later.");
+		}
+		finally {
+			try {
+				DbUtils.closeConnection(con);
+			} catch (SQLException e) {
+				throw new SomethingWentWrongException("Unable to delete data please try again later.");
+			}
+		}
+		
+	}
+
 	
 	
 	

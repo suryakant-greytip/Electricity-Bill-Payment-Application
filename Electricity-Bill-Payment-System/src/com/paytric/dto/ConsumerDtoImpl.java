@@ -139,5 +139,15 @@ public class ConsumerDtoImpl implements ConsumerDto{
 	public void setMobileNum(String mobileNum) {
 		this.mobileNum = mobileNum;
 	}
+
+	@Override
+	public String toString() {
+		return "Consumer [consumerId=" + consumerId + ", consumerUserName=" + consumerUserName
+				+ ", consumerEmail=" + consumerEmail + ", consumerPassword=" + consumerPassword + ", secQuestion="
+				+ secQuestion + ", secAnswer=" + secAnswer + ", isActive=" + isActive + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", address=" + address + ", mobileNum=" + mobileNum + "]";
+	}
+	
+	
 	
 }
