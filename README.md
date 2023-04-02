@@ -14,15 +14,14 @@
 
 <h4>Admin<h4>
 <ul type="square">
-    <li>Add Department</li>
-    <li>View All Department</li>
-    <li>View All Employee</li>
-    <li>Update the Department</li>
-    <li>Add New Employee</li>
-    <li>Transfer Employee To Other Department</li>
-    <li>Accept leaves Of Employess</li>
-    <li>Reject Leaves Of Employees</li>
-    <li>Delete Department</li>
+    <li>View All Consumers</li>
+    <li>View the bill of the consumer by there Id</li>
+    <li>View all the bills</li>
+    <li>View all paid bills</li>
+    <li>View all pending bills</li>
+    <li>Delete Consumer</li>
+    <li>Generate Consumers Bill</li>
+    <li>Resolve Consumers Complaints</li>
 </ul>
 <h4>Employee<h4>
 <ul type="square">
