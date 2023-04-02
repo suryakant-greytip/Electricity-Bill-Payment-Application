@@ -46,13 +46,11 @@
 
 <br>
 
-Link For Repository & DataBase
+## Link For Repository to clone & DataBase for import
 
-bash
-git clone 
+- [ Repository ](https://github.com/clrsurya11/-wretched-room-300.git) 
 
-bash
-Create a New Database in MySQL: "project" 
+- [ Database ](https://github.com/clrsurya11/-wretched-room-300/blob/Main-B/paytricdbbackup.sql/)
  
 
 <br>
