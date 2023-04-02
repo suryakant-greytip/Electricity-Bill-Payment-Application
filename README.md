@@ -24,7 +24,7 @@
     <li>Generate Consumers Bill</li>
     <li>Resolve Consumers Complaints</li>
 </ul>
-<h4>Employee<h4>
+<h4>Consumer<h4>
 <ul type="square">
     <li>Consumer Login</li>
     <li>Consumer Registration</li>
