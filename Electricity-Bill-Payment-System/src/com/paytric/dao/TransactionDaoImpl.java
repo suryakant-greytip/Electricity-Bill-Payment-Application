@@ -86,7 +86,7 @@ public class TransactionDaoImpl implements TransactionDao{
 		Connection con=null;
 		try {
 			con=DbUtils.startConnection();
-			String query="Insert into transaction(consumerId,billId,amount_paid,payment_date,payment_method,transactionId) values(?,?,?,?,?,?)";
+			String query="Insert into bill_transaction_history(consumerId,billId,amount_paid,payment_date,payment_method,transactionId) values(?,?,?,?,?,?)";
 			PreparedStatement ps=con.prepareStatement(query);
 			ps.setString(1, trans.getConsumerId());
 			ps.setString(2, trans.getBillId());
@@ -100,12 +100,14 @@ public class TransactionDaoImpl implements TransactionDao{
 				throw new RecordIsAlreadyUptoDate("Transaction has been done already");
 			}
 		} catch (SQLException | ClassNotFoundException e) {
+			System.out.println(e);
 			throw new SomethingWentWrongException("Something went wrong please try again later"); 
 		}
 		finally {
 			try {
 				DbUtils.closeConnection(con);
 			} catch (SQLException e) {
+				System.out.println(e);
 				throw new SomethingWentWrongException("Something went wrong please try again later"); 
 			}
 		}

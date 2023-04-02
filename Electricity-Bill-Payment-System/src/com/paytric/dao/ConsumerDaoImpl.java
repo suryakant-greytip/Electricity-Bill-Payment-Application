@@ -18,6 +18,8 @@ import com.paytric.exceptions.SomethingWentWrongException;
 
 public class ConsumerDaoImpl implements ConsumerDao{
 
+	
+	
 	@Override
 	public ConsumerDto consumerLoginData(String uName, String pass)  throws SomethingWentWrongException, InvalidUsernameOrPasswordException {
 		Connection con=null;
@@ -48,6 +50,7 @@ public class ConsumerDaoImpl implements ConsumerDao{
 		}
 	}
 
+	
 	
 	@Override
 	public int getLastDataId() throws SomethingWentWrongException, RecordNotFoundException {
@@ -166,20 +169,20 @@ public class ConsumerDaoImpl implements ConsumerDao{
 			ps.executeUpdate();
 			
 		} catch (SQLException | ClassNotFoundException e) {
+			System.out.println(e);
 			throw new SomethingWentWrongException("Payment Failed! please try again later.");
 		}
 		finally {
 			try {
 				DbUtils.closeConnection(con);
 			} catch (SQLException e) {
+				System.out.println();
 				throw new SomethingWentWrongException("Payment Failed! please try again later.");
 			}
 		}
 	}
 
 
-	
-	
 	
 	
 	@Override
@@ -207,8 +210,6 @@ public class ConsumerDaoImpl implements ConsumerDao{
 
 	
 	
-	
-	
 	@Override
 	public void updatePassword(String pass, String consId) throws SomethingWentWrongException {
 		
@@ -232,9 +233,6 @@ public class ConsumerDaoImpl implements ConsumerDao{
 		}
 	}
 
-
-	
-	
 	
 	
 }

@@ -54,7 +54,7 @@ public class ConsumerUI {
 					
 					System.out.println();
 					System.out.println(UIColors.GREEN_BOLD+"  ***"+UIColors.RESET+UIColors.YELLOW_BOLD+cDto.getFirstName()+" "+cDto.getLastName()+UIColors.RESET+UIColors.GREEN_BOLD+" LoggedIn Successfully***"+UIColors.RESET);
-					consumerMenu(sc,cDto.getFirstName()+" "+cDto.getLastName());
+					consumerMenu(sc,cDto);
 				} catch (InvalidUsernameOrPasswordException | InvalidInputException | SomethingWentWrongException e) {
 					System.out.println(UIColors.RED_BOLD+"  ***"+e.getMessage()+"***"+UIColors.RESET);
 				}
@@ -138,7 +138,7 @@ public class ConsumerUI {
 			System.out.print(UIColors.BLUE_BOLD+"  Enter Your Address (city)  : "+UIColors.RESET);
 			String address=sc.nextLine();
 			System.out.println();
-			System.out.print(UIColors.BLUE_BOLD+"  Enter Your Mobile N0. : "+UIColors.RESET);
+			System.out.print(UIColors.BLUE_BOLD+"  Enter Your Mobile No. : "+UIColors.RESET);
 			String mob=sc.nextLine();
 			System.out.println();
 			String conId=null;
@@ -167,7 +167,7 @@ public class ConsumerUI {
 				System.out.println();
 				System.out.println(UIColors.GREEN_BOLD+"  ***Consumer Registered Successfully***"+UIColors.RESET);
 				
-				System.out.print(UIColors.YELLOW_BOLD+"  Do you want to Log In ? "+UIColors.RESET);
+				System.out.print(UIColors.YELLOW_BOLD+"  Do you want to Log In[Yes/No] ? "+UIColors.RESET);
 				char ch=sc.next().toLowerCase().charAt(0);
 				System.out.println();
 				if(ch=='y') {
@@ -198,7 +198,7 @@ public class ConsumerUI {
 	
 	
 	
-	public static void consumerMenu(Scanner sc,String consumerName) throws InvalidInputException {
+	public static void consumerMenu(Scanner sc,ConsumerDto consumer) throws InvalidInputException {
 		try {
 			int choice=0;
 			do {
@@ -209,16 +209,16 @@ public class ConsumerUI {
 				
 				switch(choice) {
 				case 0 :
-					System.out.println(UIColors.GREEN_BOLD+"  ***"+consumerName+" Logged Out Successfully***"+UIColors.RESET);
+					System.out.println(UIColors.GREEN_BOLD+"  ***"+consumer.getFirstName()+" "+consumer.getLastName()+" Logged Out Successfully***"+UIColors.RESET);
 					break;
 				case 1 :
-					payBills(sc);
+					payBills(sc,consumer);
 					break;
 				case 2 :
-					viewTransactionHistory(sc);
+					viewTransactionHistory(sc,consumer);
 					break;
 				case 3 :
-					fileComplaint(sc);
+					fileComplaint(sc,consumer);
 					break;	
 				default :
 					System.out.println(UIColors.RED_BOLD+"  ***Invalid Input please try again***"+UIColors.RESET);
@@ -234,10 +234,9 @@ public class ConsumerUI {
 	
 	
 	
-	public static void showAllPendingBills(Scanner sc) {
-		System.out.print(UIColors.BLUE_BOLD+"  Enter your consumerId : "+UIColors.RESET);
-		sc.nextLine();
-		String consId=sc.nextLine();
+	public static void showAllPendingBills(Scanner sc,ConsumerDto consumer) {
+		
+		String consId=consumer.getConsumerId();
 		System.out.println();
 		
 		ConsumerDao cDao=new ConsumerDaoImpl();
@@ -245,13 +244,8 @@ public class ConsumerUI {
 		try {
 			List<BillDto> list=cDao.showAllPendingBillsData(consId);
 			
-			String name=null;
-			try {
-				AdminDao aDao=new AdminDaoImpl();
-				name=aDao.getNameById(list.get(0).getConsumerId());
-			} catch (SomethingWentWrongException | RecordNotFoundException e) {
-				System.out.println(UIColors.RED_BOLD+"  xx> "+e.getMessage()+" <xx"+UIColors.RESET);
-			}
+			AdminDao aDao=new AdminDaoImpl();
+			String name=aDao.getNameById(list.get(0).getConsumerId());
 			
 			System.out.println();
 			System.out.println(UIColors.BLUE_BOLD+"  ***All Pending Electricity Bill of "+UIColors.RESET+UIColors.YELLOW_BOLD+name+UIColors.RESET+" :- ");
@@ -276,7 +270,7 @@ public class ConsumerUI {
 				System.out.println(UIColors.PURPLE_BOLD+"**********************************************************************************************************************************************************"+UIColors.RESET);
 			});
 		} catch (SomethingWentWrongException | RecordNotFoundException e) {
-			System.out.println(e.getMessage());
+			System.out.println(UIColors.RED_BOLD+"  xx> "+e.getMessage()+" <xx"+UIColors.RESET);
 		}
 		System.out.println(UIColors.BLACK_BOLD+"---x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x----"+UIColors.RESET);
 	}
@@ -294,8 +288,9 @@ public class ConsumerUI {
 		System.out.println("  Select 4 for Internet Banking"+UIColors.RESET);
 		System.out.println();
 		System.out.println();
-		System.out.println(UIColors.YELLOW_BOLD+"  Select Payment Method from Above : "+UIColors.RESET);
+		System.out.print(UIColors.YELLOW_BOLD+"  Select Payment Method from Above : "+UIColors.RESET);
 		int choice=Integer.parseInt(sc.next());
+		System.out.println();
 		switch(choice) {
 		case 1 :
 			return one;
@@ -313,8 +308,8 @@ public class ConsumerUI {
 	
 	
 	
-	public static void payBills(Scanner sc) throws InvalidInputException {
-		showAllPendingBills(sc);
+	public static void payBills(Scanner sc,ConsumerDto consumer) throws InvalidInputException {
+		showAllPendingBills(sc,consumer);
 		
 		System.out.print(UIColors.YELLOW_BOLD+"  Enter Bill Id from above which you have to pay : "+UIColors.RESET);
 		String BillId=sc.next();
@@ -346,9 +341,8 @@ public class ConsumerUI {
 
 
 	
-	public static void viewTransactionHistory(Scanner sc) {
-		System.out.print(UIColors.BLUE_BOLD+"  Enter Your ConsumerId : "+UIColors.RESET);
-		String consId=sc.next();
+	public static void viewTransactionHistory(Scanner sc,ConsumerDto consumer) {
+		String consId=consumer.getConsumerId();
 		System.out.println();
 		TransactionDao tDao=new TransactionDaoImpl();
 		try {
@@ -474,14 +468,13 @@ public class ConsumerUI {
 	
 	
 	
-	public static void fileComplaint(Scanner sc) {
+	public static void fileComplaint(Scanner sc,ConsumerDto consumer) {
 		
 		try {
 			ComplaintDao compDao=new ComplaintDaoImpl();
 			String compId="COMP"+(compDao.getLastComplaintId()+1);
 			
-			System.out.print(UIColors.BLUE_BOLD+"  Enter Your ConsumerId : "+UIColors.RESET);
-			String consId=sc.next();
+			String consId=consumer.getConsumerId();
 			System.out.println();
 			
 			LocalDate compDate=LocalDate.now();
