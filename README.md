@@ -14,6 +14,7 @@
 
 <h4>Admin<h4>
 <ul type="square">
+    <li>Admin Login</li>
     <li>View All Consumers</li>
     <li>View the bill of the consumer by there Id</li>
     <li>View all the bills</li>
@@ -25,10 +26,12 @@
 </ul>
 <h4>Employee<h4>
 <ul type="square">
-    <li>View Profile</li>
-    <li>Update Profile</li>
-    <li>Change Password</li>
-    <li>Apply for Leave</li>
+    <li>Consumer Login</li>
+    <li>Consumer Registration</li>
+    <li>Consumer Forget Password</li>
+    <li>To Pay Bills</li>
+    <li>To View transaction history</li>
+    <li>To File a Complaint</li>
 </ul>
 <br>
     
