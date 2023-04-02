@@ -59,18 +59,19 @@ Create a New Database in MySQL: "project"
 
 ## ER Diagram
     
-![ER-Diagram](https://user-images.githubusercontent.com/111189783/229363814-3af95128-cce3-40d5-a057-b9b3f6988bae.png))
+![ER-Diagram](https://user-images.githubusercontent.com/111189783/229363814-3af95128-cce3-40d5-a057-b9b3f6988bae.png)
 
 <br>
         
 ## Feedback
-Your valuable feedback is greatly appreciated. You can reach out to me via below medium
+Your valuable feedback is really appreciated. You can reach out to me via below platforms and share your feedbacks.
 
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)]()
-
+[![portfolio](https://clrsurya11.github.io)]()
+    
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sakshi0704/)
 
 
+    
 ## Authors
 
 - [clrsurya11](https://github.com/clrsurya11)
