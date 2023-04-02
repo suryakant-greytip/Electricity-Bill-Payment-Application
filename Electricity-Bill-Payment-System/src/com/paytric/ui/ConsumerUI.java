@@ -1,18 +1,24 @@
 package com.paytric.ui;
 
+import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Scanner;
 
 import com.paytric.colors.UIColors;
 import com.paytric.dao.AdminDao;
 import com.paytric.dao.AdminDaoImpl;
+import com.paytric.dao.ComplaintDao;
+import com.paytric.dao.ComplaintDaoImpl;
 import com.paytric.dao.ConsumerDao;
 import com.paytric.dao.ConsumerDaoImpl;
 import com.paytric.dao.TransactionDao;
 import com.paytric.dao.TransactionDaoImpl;
 import com.paytric.dao.Validation;
 import com.paytric.dto.BillDto;
+import com.paytric.dto.ComplaintDto;
+import com.paytric.dto.ComplaintDtoImpl;
 import com.paytric.dto.ConsumerDto;
 import com.paytric.dto.ConsumerDtoImpl;
 import com.paytric.dto.TransactionDto;
@@ -185,7 +191,8 @@ public class ConsumerUI {
 		System.out.println(UIColors.BLUE_BOLD+"  ***ROLE OF CONSUMER : "+UIColors.RESET);
 		System.out.println(UIColors.BLACK_BOLD+"  Select 0 : To Log Out");
 		System.out.println("  Select 1 : To Pay Bills");
-		System.out.println("  Select 2 : To View transaction history."+UIColors.RESET);
+		System.out.println("  Select 2 : To View transaction history.");
+		System.out.println("  Select 3 : To File a Complaint."+UIColors.RESET);
 		System.out.println();
 	}
 	
@@ -210,6 +217,9 @@ public class ConsumerUI {
 				case 2 :
 					viewTransactionHistory(sc);
 					break;
+				case 3 :
+					fileComplaint(sc);
+					break;	
 				default :
 					System.out.println(UIColors.RED_BOLD+"  ***Invalid Input please try again***"+UIColors.RESET);
 				}
@@ -411,4 +421,100 @@ public class ConsumerUI {
 	}
 
 
+	public static void displayComplaintType() {
+		System.out.println(UIColors.BLUE_BOLD+"  ***COMPLAINT MENU :- "+UIColors.RESET);
+		System.out.println(UIColors.BLACK_BOLD+"  Select 1 : Power outages or interruptions");
+		System.out.println("  Select 2 : High or fluctuating electricity bills");
+		System.out.println("  Select 3 : Voltage or frequency fluctuations");
+		System.out.println("  Select 4 : Power surges");
+		System.out.println("  Select 5 : Electrical safety concerns");
+		System.out.println("  Select 6 : Meter issues");
+		System.out.println("  Select 7 : Connection or disconnection issues"+UIColors.RESET);
+		System.out.println();
+		System.out.print(UIColors.YELLOW_BOLD+"  Select Your Complaint Type from above : "+UIColors.RESET);
+		
+	}
+	
+	
+	
+	public static String selectComplaint(Scanner sc) {
+		String one="Power outages or interruptions";
+		String two="High or fluctuating electricity bills";
+		String three="Voltage or frequency fluctuations";
+		String four="Power surges";
+		String five="Electrical safety concerns";
+		String six="Meter issues";
+		String seven="Connection or disconnection issues";
+		
+		displayComplaintType();
+		int choice=Integer.parseInt(sc.next());
+		System.out.println();
+		
+		switch(choice) {
+		case 1 :
+			return one;
+		case 2 :
+			return two;
+		case 3 :
+			return three;
+		case 4 :
+			return four;
+		case 5 :
+			return five;
+		case 6 :
+			return six;
+		case 7 :
+			return seven;
+		default :
+			System.out.println(UIColors.RED_BOLD+"  Invalid Input! please try again later"+UIColors.RESET);
+		}
+		
+		return "";
+	}
+	
+	
+	
+	public static void fileComplaint(Scanner sc) {
+		
+		try {
+			ComplaintDao compDao=new ComplaintDaoImpl();
+			String compId="COMP"+(compDao.getLastComplaintId()+1);
+			
+			System.out.print(UIColors.BLUE_BOLD+"  Enter Your ConsumerId : "+UIColors.RESET);
+			String consId=sc.next();
+			System.out.println();
+			
+			LocalDate compDate=LocalDate.now();
+
+			LocalTime comptime=LocalTime.now();
+			
+			String compType=selectComplaint(sc);
+			
+			System.out.print(UIColors.BLUE_BOLD+"  Provide a Short Description about your complaint  : "+UIColors.RESET);
+			sc.nextLine();
+			String compDesc=sc.nextLine();
+			System.out.println();
+			
+			String assignedTo="Admin";
+			
+			int status=0;
+			
+			LocalDate resDate=null;
+			
+			LocalTime resTime=null;
+			
+			
+			ComplaintDto compDto=new ComplaintDtoImpl(compId, consId, compDate, comptime, compType, compDesc, assignedTo, status, resDate, resTime);
+			
+			compDao.fileComplaintData(compDto);
+			System.out.println(UIColors.GREEN_BOLD+"  ***Complaint Filed Successfully***"+UIColors.RESET);
+		}catch (SomethingWentWrongException | RecordNotFoundException e) {
+			System.out.println(UIColors.RED_BOLD+"  xx> "+e.getMessage()+" <xx"+UIColors.RESET);
+		}
+		System.out.println();
+		System.out.println(UIColors.BLACK_BOLD+"---x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x----"+UIColors.RESET);
+		System.out.println();
+	}
+
+	
 }

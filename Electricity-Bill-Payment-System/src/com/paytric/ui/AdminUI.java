@@ -10,9 +10,12 @@ import java.util.Scanner;
 import com.paytric.colors.UIColors;
 import com.paytric.dao.AdminDao;
 import com.paytric.dao.AdminDaoImpl;
+import com.paytric.dao.ComplaintDao;
+import com.paytric.dao.ComplaintDaoImpl;
 import com.paytric.dto.AdminDto;
 import com.paytric.dto.BillDto;
 import com.paytric.dto.BillDtoImpl;
+import com.paytric.dto.ComplaintDto;
 import com.paytric.dto.ConsumerDto;
 import com.paytric.exceptions.InvalidUsernameOrPasswordException;
 import com.paytric.exceptions.RecordNotFoundException;
@@ -77,7 +80,8 @@ public class AdminUI {
 		System.out.println("  Select 4 -> To View all paid bills.");
 		System.out.println("  Select 5 -> To View all pending bills.");
 		System.out.println("  Select 6 -> To Delete Consumer.");
-		System.out.println("  Select 7 -> To Generate Consumers Bill."+UIColors.RESET);
+		System.out.println("  Select 7 -> To Generate Consumers Bill.");
+		System.out.println("  Select 8 -> To Resolve Consumers Complaints."+UIColors.RESET);
 		System.out.println();
 		System.out.print(UIColors.YELLOW_BOLD+"  Enter a selection from above: "+UIColors.RESET);
 	}
@@ -174,7 +178,10 @@ public class AdminUI {
 		} catch (SomethingWentWrongException | RecordNotFoundException e) {
 			System.out.println(UIColors.RED_BOLD+"  xx> "+e.getMessage()+" <xx"+UIColors.RESET);
 		}
-		System.out.println(UIColors.BLACK_BOLD+"---x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x---"+UIColors.RESET);
+		System.out.println();
+		System.out.println(UIColors.BLACK_BOLD+"---x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x----"+UIColors.RESET);
+		System.out.println();
+		
 	}
 	
 	
@@ -219,8 +226,11 @@ public class AdminUI {
 		} catch (SomethingWentWrongException | RecordNotFoundException e) {
 			System.out.println(UIColors.RED_BOLD+"  xx>"+e.getMessage()+UIColors.RESET);
 		}
-		System.out.println(UIColors.BLACK_BOLD+"---x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x---"+UIColors.RESET);
-	}
+		System.out.println();
+		System.out.println(UIColors.BLACK_BOLD+"---x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x----"+UIColors.RESET);
+		System.out.println();
+		
+    }
 	
     
     
@@ -264,8 +274,10 @@ public class AdminUI {
 		} catch (SomethingWentWrongException | RecordNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
-		System.out.println(UIColors.BLACK_BOLD+"---x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x---"+UIColors.RESET);
-	}
+		System.out.println();
+		System.out.println(UIColors.BLACK_BOLD+"---x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x----"+UIColors.RESET);
+		System.out.println();
+    }
     
 	
     
@@ -281,7 +293,9 @@ public class AdminUI {
 		} catch (SomethingWentWrongException | RecordNotFoundException e) {
 			System.out.println(UIColors.RED_BOLD+"  xx>"+e.getMessage()+UIColors.RESET);
 		}
-		System.out.println(UIColors.BLACK_BOLD+"---x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x---"+UIColors.RESET);
+		System.out.println();
+		System.out.println(UIColors.BLACK_BOLD+"---x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x----"+UIColors.RESET);
+		System.out.println();
     }
     
     
@@ -352,7 +366,9 @@ public class AdminUI {
 		} catch (SomethingWentWrongException | RecordNotFoundException e) {
 			System.out.println(UIColors.RED_BOLD+"  xx>"+e.getMessage()+UIColors.RESET);
 		}
-    	System.out.println(UIColors.BLACK_BOLD+"---x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x---"+UIColors.RESET);
+    	System.out.println();
+		System.out.println(UIColors.BLACK_BOLD+"---x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x----"+UIColors.RESET);
+		System.out.println();
     }
     
     
@@ -393,6 +409,9 @@ public class AdminUI {
 				case 7 :
 					generateConsumersBill(sc);
 					break;
+				case 8 :
+					resolveComplaints(sc);
+					break;
 				default :
 					System.out.println(UIColors.RED_BOLD+"  xx> Invalid Input please try again <xx"+UIColors.RESET);
 					System.out.println();
@@ -404,8 +423,49 @@ public class AdminUI {
 			System.out.println(UIColors.RED_BOLD+"  xx> Invalid Input type please enter numerical input <xx"+UIColors.RESET);
 			System.out.println();
 		}
+		System.out.println();
+		System.out.println(UIColors.BLACK_BOLD+"---x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x----"+UIColors.RESET);
+		System.out.println();
 		
 	}
     
+    public static void resolveComplaints(Scanner sc) {
+    	try {
+			ComplaintDao compDao=new ComplaintDaoImpl();
+			List<ComplaintDto> list=compDao.viewAllComplaints();
+    	
+			System.out.println();
+			System.out.println(UIColors.BLUE_BOLD+"  List of all Complaints : "+UIColors.RESET);
+			System.out.println();
+			list.forEach(s->{
+				
+				System.out.println(UIColors.BLACK_BOLD+"  Consumer Id : "+s.getConsId());
+				System.out.println("  Complaint Id : "+s.getCompId());
+				System.out.println("  Complaint Date : "+s.getCompDate());
+				System.out.println("  Complaint Time : "+s.getCompTime());
+				System.out.println("  Complaint Type : "+s.getCompTypa());
+				System.out.println("  Complaint Description : "+s.getCompDesc());
+				System.out.println("  Complaint Assigned To : "+s.getAssignedTo());
+				System.out.println("  Complaint Status : "+(s.getStatus()==0 ? "Complaint Not Resolved" : "Complaint is Resolved"+UIColors.RESET));
+				
+				System.out.println(UIColors.PURPLE_BOLD+"**********************************************************************************************************************************************"+UIColors.RESET);
+			});
+			
+			System.out.println();
+			System.out.print(UIColors.YELLOW_BOLD+"  Enter Complaint Id that you want to resolve from above : "+UIColors.RESET);
+			String compId=sc.next();
+			System.out.println();
+			
+			compDao.resolveComplaint(compId);
+    		System.out.println(UIColors.GREEN_BOLD+"  ***Complaint Is Resolved Successfully***"+UIColors.RESET);
+		} catch (SomethingWentWrongException | RecordNotFoundException e) {
+			System.out.println(UIColors.RED_BOLD+"  xx>"+e.getMessage()+UIColors.RESET);
+		}
+    	
+    	System.out.println();
+		System.out.println(UIColors.BLACK_BOLD+"---x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x----"+UIColors.RESET);
+		System.out.println();
+    	
+    }
     
 }
