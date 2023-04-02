@@ -67,7 +67,7 @@ CREATE TABLE `bill` (
   UNIQUE KEY `billId` (`billId`),
   KEY `fk_bill_consumer` (`consumerId`),
   CONSTRAINT `fk_bill_consumer` FOREIGN KEY (`consumerId`) REFERENCES `consumers` (`consumerId`)
-) ENGINE=InnoDB AUTO_INCREMENT=1003 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1005 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,7 +76,7 @@ CREATE TABLE `bill` (
 
 LOCK TABLES `bill` WRITE;
 /*!40000 ALTER TABLE `bill` DISABLE KEYS */;
-INSERT INTO `bill` VALUES (1000,'C100','B1000',50.00,90.00,40.00,10,410.00,2.5,'2022-01-01','2022-01-30','2022-01-31','2022-02-10',1),(1001,'C100','B1001',90.00,130.00,40.00,10,410.00,2.5,'2022-02-01','2022-03-01','2022-03-02','2022-03-12',0),(1002,'C101','B1002',0.00,34.00,34.00,10,348.50,2.5,'2023-01-01','2023-01-30','2023-04-02','2023-04-12',0);
+INSERT INTO `bill` VALUES (1000,'C100','B1000',50.00,90.00,40.00,10,410.00,2.5,'2022-01-01','2022-01-30','2022-01-31','2022-02-10',1),(1001,'C100','B1001',90.00,130.00,40.00,10,410.00,2.5,'2022-02-01','2022-03-01','2022-03-02','2022-03-12',1),(1002,'C101','B1002',0.00,34.00,34.00,10,348.50,2.5,'2023-01-01','2023-01-30','2023-04-02','2023-04-12',0),(1003,'C101','B1003',30.00,60.00,30.00,10,307.50,2.5,'2023-03-01','2023-04-01','2023-04-03','2023-04-13',0),(1004,'C100','B1004',600.00,650.00,50.00,10,512.50,2.5,'2023-01-01','2023-01-30','2023-04-03','2023-04-13',1);
 /*!40000 ALTER TABLE `bill` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -99,7 +99,7 @@ CREATE TABLE `bill_transaction_history` (
   KEY `consumerId` (`consumerId`),
   KEY `Id` (`Id`),
   CONSTRAINT `bill_transaction_history_ibfk_1` FOREIGN KEY (`consumerId`) REFERENCES `consumers` (`consumerId`)
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1004 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,7 +108,7 @@ CREATE TABLE `bill_transaction_history` (
 
 LOCK TABLES `bill_transaction_history` WRITE;
 /*!40000 ALTER TABLE `bill_transaction_history` DISABLE KEYS */;
-INSERT INTO `bill_transaction_history` VALUES (1000,'C100','B1000',410.00,'2023-04-01','BHIM UPI','T1000');
+INSERT INTO `bill_transaction_history` VALUES (1001,'C100','B1000',410.00,'2023-04-01','BHIM UPI','T1000'),(1002,'C100','B1001',410.00,'2023-04-03','Debit Card','T1002'),(1003,'C100','B1004',512.50,'2023-04-03','Internet Banking','T1003');
 /*!40000 ALTER TABLE `bill_transaction_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,7 +135,7 @@ CREATE TABLE `complaints` (
   UNIQUE KEY `complaintId` (`complaintId`),
   KEY `fk_comp_cons` (`consumerId`),
   CONSTRAINT `fk_comp_cons` FOREIGN KEY (`consumerId`) REFERENCES `consumers` (`consumerId`)
-) ENGINE=InnoDB AUTO_INCREMENT=1002 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1004 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,7 +144,7 @@ CREATE TABLE `complaints` (
 
 LOCK TABLES `complaints` WRITE;
 /*!40000 ALTER TABLE `complaints` DISABLE KEYS */;
-INSERT INTO `complaints` VALUES (1000,'COMP1000','C100','2023-04-02','04:35:46','Meter issues','Meter is not working properly it is running so fast.','admin',0,NULL,NULL),(1001,'COMP1001','C100','2023-04-02','05:02:45','Power outages or interruptions','There is no consistency in power supply, Power cutoff is frequently seen.','admin',1,'2023-04-02','05:59:17');
+INSERT INTO `complaints` VALUES (1000,'COMP1000','C100','2023-04-02','04:35:46','Meter issues','Meter is not working properly it is running so fast.','admin',0,NULL,NULL),(1001,'COMP1001','C100','2023-04-02','05:02:45','Power outages or interruptions','There is no consistency in power supply, Power cutoff is frequently seen.','admin',1,'2023-04-02','05:59:17'),(1002,'COMP1002','C103','2023-04-03','00:31:11','Voltage or frequency fluctuations','Voltage is fluctuating frequently and there is inconsistency in Electricity.','admin',0,NULL,NULL),(1003,'COMP1003','C100','2023-04-03','03:09:19','Electrical safety concerns','Electrical Safety is weak in our locality there are some bare wires','admin',0,NULL,NULL);
 /*!40000 ALTER TABLE `complaints` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,7 +172,7 @@ CREATE TABLE `consumers` (
   UNIQUE KEY `consumerUserName` (`consumerUserName`),
   UNIQUE KEY `consumerEmail` (`consumerEmail`),
   KEY `Id` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +181,7 @@ CREATE TABLE `consumers` (
 
 LOCK TABLES `consumers` WRITE;
 /*!40000 ALTER TABLE `consumers` DISABLE KEYS */;
-INSERT INTO `consumers` VALUES (100,'C100','Surya9011','singhsurya@gmail.com','Surya@555','what is your favourite game','cricket',0,'Suryakant','Singh','Pune(MH)','7744837409'),(101,'C101','Abhi9028','Abhi9028@gmail.com','Abhi@123','What is your High School name?','GEMHS',1,'Abhishek','Gupta','Pune','7890987659'),(102,'C102','Istiyak11','Istiyak11@gmail.com','Istiyak@123','What is your favourite Game','Cricket',1,'Istiyak','Shaikh','Pune','8987987987');
+INSERT INTO `consumers` VALUES (100,'C100','Surya9011','singhsurya@gmail.com','Surya@555','what is your favourite game','cricket',0,'Suryakant','Singh','Pune(MH)','7744837409'),(101,'C101','Abhi9028','Abhi9028@gmail.com','Abhi@123','What is your High School name?','GEMHS',1,'Abhishek','Gupta','Pune','7890987659'),(102,'C102','Istiyak11','Istiyak11@gmail.com','Istiyak@123','What is your favourite Game','Cricket',1,'Istiyak','Shaikh','Pune','8987987987'),(103,'C103','Sunny6789','sunny6789@gmail.com','Sunny@6789','What is your favourite Game','Cricket',1,'Sunny','Jaiswal','Pune','8979879889');
 /*!40000 ALTER TABLE `consumers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -194,4 +194,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-02 21:56:08
+-- Dump completed on 2023-04-03  3:14:11
