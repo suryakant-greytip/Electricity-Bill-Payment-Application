@@ -33,6 +33,13 @@
     <li>To View transaction history</li>
     <li>To File a Complaint</li>
 </ul>
+    
+<br>
+
+## FLOW CHART
+    
+![FLOW-CHART](https://user-images.githubusercontent.com/111189783/229370551-5766affc-e9be-4efa-a5f1-f0f4983c8d9a.png)
+
 <br>
     
 ## Technology & Tools used
