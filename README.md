@@ -1,14 +1,13 @@
 # -wretched-room-300
 
 <h1 align="center" >Human Resource Management System</h1>
-<div align="center"><img src="https://user-images.githubusercontent.com/112800906/229359172-0a12292c-9ea1-4278-9a3d-7e4006feffc7.png"></div>
+<div align="center"><img src="https://user-images.githubusercontent.com/111189783/229363684-8baaed53-fe42-4ddd-b465-ef6185ffc41f.png"></div>
 
-<br>
 
 ## Introduction
 
-<p>Human Resource Management System (HRMS) is a software which is used to control and manage the records of the Employees and Departments</p>
-<p>Primary goal of HRMS is that Admin can register Employees in the given Departments,  manages different Departments and Employee can modify their profiles and can apply for leaves</p>
+<p>PAYTRIC :- Electricity Bill Payment System (EBPS) is a software which is used to provide a payment service to consumers so that they pay all their pending bills comfortably from home.</p>
+<p>With the help of this software user can pay the bill, can see his all transactions, can also file complaints regarding the issues he is facing.</p>
 <br>
 
 ## Key Features
@@ -58,7 +57,7 @@ Create a New Database in MySQL: "project"
 
 ## ER Diagram
     
-![Untitled (5)](https://user-images.githubusercontent.com/112800906/229357972-188b95eb-f9a7-4c4c-87cb-d2a3dcd6c6dc.png))
+![ER-Diagram](https://user-images.githubusercontent.com/111189783/229363814-3af95128-cce3-40d5-a057-b9b3f6988bae.png))
 
 <br>
         
