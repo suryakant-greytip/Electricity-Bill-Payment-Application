@@ -72,7 +72,7 @@ Your valuable feedback is greatly appreciated. You can reach out to me via below
 
 ## Authors
 
-- [Km Sakshi](https://github.com/Sakshi0704)
+- [clrsurya11](https://github.com/clrsurya11)
 
 ## Acknowledgements
 
