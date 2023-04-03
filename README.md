@@ -69,7 +69,7 @@
 <br>
         
 ## Feedback
-Your valuable feedback is really appreciated. You can reach out to me via below platforms and share your feedbacks.
+Your valuable feedback is really appreciated. You can reach out to me via below platforms and share your feedbacks with me.
 
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://clrsurya11.github.io/)
 
